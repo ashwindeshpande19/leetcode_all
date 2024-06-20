@@ -172,3 +172,47 @@ def reverseStringString(s):
         return ''.join(s_list)
 print(reverseStringString(s = "hello"))
 
+
+# MERGED SORTED ARRAY (LEETCODE 88)
+
+def merge(nums1, m, nums2, n):
+    # Calculate the index where the merged array will start from
+    p = m + n - 1
+
+    # Decrement m and to point to the last elements of nums1 and nums2 respectively 
+    m -= 1
+    n -= 1
+
+    # Loop until both nums1 and nums2 have elements remaining 
+    while m >= 0  and n >= 0:
+        
+        # Compare the last elements of nums1 and nums2
+        if nums1[m] > nums2[n]:
+            
+            # If the last element if nums1 is greater, place it at position p
+            nums1[p] = nums1[m]
+
+            # Move the pointer m to the previous element un n ums1
+            m -= 1
+        
+        else:
+
+            # If the last element of nums2 is greater or equal, place it 
+            # at position p
+            nums1[p] = nums2[n]
+
+            # Move the pointer p to the previous position for the next element
+            n -= 1
+        
+        # Move the pointer p to the previous position for the next element
+        p -= 1
+    
+    # If there are are elements remaining in nums2, copy them to the beginging of nums1
+    nums1[:n + 1] = nums2[:n + 1]
+
+    return nums1
+
+
+print(merge(nums1= [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3))    
+
+
