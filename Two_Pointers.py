@@ -39,7 +39,7 @@ s = "race a car"
 result = isPalindrome(s)
 
 # Print the result
-# print(f'Is the string "{s}" a palindrome?: {result}')
+print(f'Is the string "{s}" a palindrome?: {result}')
 
 
 # VALID PALINDROME II (LEETCODE 680)
@@ -73,7 +73,7 @@ s = "abcab"
 result = validPalindrome(s)
 
 # Print the result
-# print(f'Is the string "{s}" a palindrome?: {result}')
+print(f'Is the string "{s}" a palindrome?: {result}')
 
 
 # MINIMUM DIFFERENCE BETWEEN HIGHEST AND LOWEST OF K SCORES (LEETCODE 1984)
@@ -243,5 +243,26 @@ def moveZeroes(nums):
 print(moveZeroes(nums = [0,1,0,3,12]))
              
 
+# REMOVE DUPLICATES FROM SORTED ARRAY (LEETCODE 26)
 
+def removeDuplicates(nums):
+    
+    # Initialize left pointer and right pointer to zero
+    l, r = 0, 0
 
+    # Iterate through the array
+    for r in range(len(nums)):
+
+        # Check if the current element is different from previous element 
+        if r == 0 or nums[r] != nums[r - 1]:
+
+            # If different, copy the element to the left pointer 
+            nums[l] = nums[r]
+
+            # Increment the left pointer
+            l += 1
+    
+    # Return the length of the modified array 
+    return l
+
+print(removeDuplicates(nums = [1,1,2,3]))
