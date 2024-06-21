@@ -248,7 +248,7 @@ print(moveZeroes(nums = [0,1,0,3,12]))
 def removeDuplicates(nums):
     
     # Initialize left pointer and right pointer to zero
-    l, r = 0, 0
+    l = 0
 
     # Iterate through the array
     for r in range(len(nums)):
@@ -266,3 +266,45 @@ def removeDuplicates(nums):
     return l
 
 print(removeDuplicates(nums = [1,1,2,3]))
+
+# SORT COLORS (ARRANGE COLORS IN S30) (LEETCODE 75)
+
+def sortColors(nums):
+
+    # Initialize pointers for three sections of the list 
+    
+    # Leftmost and rightmost indices of unsorted part
+    l, r = 0, len(nums) - 1  
+
+    # Current index being processed
+    i = 0
+
+    while i <= r :
+
+        # If the current element is 0
+        if nums[i] == 0:
+
+            # Move it to the begining of the list (0 secton)
+            nums[l], nums[i] = nums[i], nums[l]
+
+            # Expand the 0 section
+            l += 1
+
+        # If the current element is 2:
+        elif nums[i] == 2:
+            
+            # Move it to the end of the list (2 section)
+            nums[i], nums[r] = nums[r], nums[i]
+
+            # Shrink the unsorted section
+            r -= 1
+
+            # Re- check thw swapped element (since it might now be a 0 or 1)
+            i -= 1
+
+        # Move to the next element 
+        i += 1
+
+    return nums
+
+print(sortColors(nums = [2,0,2,1,1,0]))
