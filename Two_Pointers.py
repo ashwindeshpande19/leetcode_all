@@ -207,12 +207,41 @@ def merge(nums1, m, nums2, n):
         # Move the pointer p to the previous position for the next element
         p -= 1
     
-    # If there are are elements remaining in nums2, copy them to the beginging of nums1
+    # If there are are elements remaining in nums2, copy them to the beginging 
+    # of nums1
     nums1[:n + 1] = nums2[:n + 1]
 
     return nums1
 
 
 print(merge(nums1= [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3))    
+
+
+# MOVE ZEROES (LEETCODE 283)
+
+def moveZeroes(nums):
+    
+    # Initialize the left pointer to keep track if the position where non-zero 
+    # elements should be placed
+    l = 0 
+
+    # Iterate throught the array using a right pointer 'r'
+    for r in range(len(nums)):
+        
+        # If the current element is non-zero
+        if nums[r] != 0:
+            
+            # Swap the current non-zero element with the element at the left 
+            # pointer position
+            nums[l], nums[r] = nums[r], nums[l]
+
+            # Move the left pointer to the next position
+            l += 1
+    
+    return nums
+
+print(moveZeroes(nums = [0,1,0,3,12]))
+             
+
 
 
