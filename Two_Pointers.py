@@ -102,7 +102,8 @@ print(minimumDifference(nums = [9,4,1,7], k = 2))
 # MERGE STRINGS ALTERNATELY (LEETCODE 1768)
 
 def mergeAlternately(word1, word2):
-    # Intialize two pointers i and j to iterate through word1 and word2 respectively
+    # Intialize two pointers i and j to iterate through 
+    # word1 and word2 respectively
     i = j = 0
 
     # Initialize an empty list to store the merged characters
@@ -308,3 +309,67 @@ def sortColors(nums):
     return nums
 
 print(sortColors(nums = [2,0,2,1,1,0]))
+
+
+# ASSIGN COOKIES (LEETCODE 455)
+
+def findContentChildren(g, s):
+
+    # Sort the list g
+    g.sort()
+
+    # Sort the list s
+    s.sort()
+
+    # Initialize two pointers on at the start and one at the start of s
+    i, j = 0, 0
+
+    # Initializw result variable called content_children to track 
+    # number of content children
+    content_children = 0
+
+    # Iterate through both the lists 
+    while i < len(g) and j < len(s):
+
+        # If the element at s is greater than element at g then 
+        # increment content_children
+        if s[j] >= g[i]:
+            content_children += 1
+
+            # Increment the i pointer
+            i += 1
+        
+        # Increment the j pointer 
+        j += 1
+
+    # Return the number of content children
+    return content_children
+
+print(findContentChildren(g = [1,2], s = [1,2,3]))
+
+
+# FIND FIRST PALINDROMIC STRING IN THE ARRAY (LEETCODE 2108)
+
+def firstPalindrome(words):
+
+    # Iterate through each word in the words list
+    for w in words:
+
+        # Initialize two pointers, one ate the start of the wach word and 
+        # one at the end of each word
+        l, r = 0, len(w) - 1
+
+        # While the start letter and end letter are the same of the single word
+        while w[l] == w[r] :
+
+            # If the pointers meet then return the word w 
+            if l >= r:
+                return w
+
+            # # Move the pointers towards each other 
+            l, r = l + 1, r - 1
+
+    # If there is no palindrome in the list then return empty string
+    return "" 
+    
+print(firstPalindrome(words = ["abc","car","ada","racecar","cool"]))
