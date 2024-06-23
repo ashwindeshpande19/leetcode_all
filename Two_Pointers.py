@@ -402,3 +402,95 @@ def sortArrayByParity(nums):
         return nums
 
 print(sortArrayByParity(nums = [3,1,2,4]))
+
+#  REVERSE WORDS IN A STRING III (LEETOCDE 557)
+
+def reverseWordsIII(s):
+    
+    # Convert the input string into a list
+    s_list = list(s)
+
+    # Initialize a left pointer at the start of the array
+    l = 0
+
+    # Iterate through the array using the right pointer 
+    for r in range(len(s_list)):
+
+        # If the r pointer is at a space or at the last character of the sting
+        if s_list[r] == " " or r == len(s_list) - 1:
+
+            # Initialize temporary left and temporary right pointer
+            # Temporary left pointer as left pointer itself
+            # Initialize temporary right pointer as r - 1 
+            temp_l, temp_r = l, r - 1
+
+            # If the right pointer is at the last element of the list 
+            if r == len(s_list) - 1:
+                
+                # make the temporary right pointer as the right pointer
+                temp_r = r
+
+            # While the temporary left pointer is less than the 
+            # temporary rigt pointer
+            while temp_l < temp_r:
+
+                # Swap the elements at the temporary left and right pointers
+                s_list[temp_l], s_list[temp_r] = s_list[temp_r], s_list[temp_l]
+
+                # Move both the temporary pointers towards each other
+                temp_l += 1
+                temp_r -= 1
+
+            # Shift the left pointer to the right + 1 as f the right 
+            # pointer is pointing to the space character then the start 
+            # of the word will be after the space character 
+            l = r + 1
+
+    # Return the output back in the string format 
+    return "".join(s_list)
+    
+print(reverseWordsIII(s = "Mr Ding"))
+
+# BACKSPACE STRING COMPARE (LEETCODE 844)
+
+def backspaceCompare(s, t):
+        
+        # Initialize a stacks to keep track of the letters in both s and t
+        s_stack = []
+        t_stack = []
+
+        # Iterate through the string s
+        for char in s:
+
+            # If the char is equal to '#' pop from the stack
+            if char == '#':
+                
+                # Check wether the stack is empty or not 
+                if s_stack:
+                    s_stack.pop()
+
+            # If the character is not '#' append the character to the stack        
+            else:
+                s_stack.append(char)
+        
+        # Iterate through the string t
+        for char in t:                
+            
+            # If the character is '#' pop from the stack
+            if char == '#' :
+
+                # Check if the stack is empty or not 
+                if t_stack:
+                    t_stack.pop()
+            
+            # If the character is not a '#' append the character to the stack
+            else:
+                t_stack.append(char)
+
+        # Return True if both the stacks are same otherwise return False        
+        if s_stack == t_stack:
+            return True
+        else:
+            return False
+
+print(backspaceCompare(s = "ab#c", t = "ad#c"))
