@@ -373,3 +373,32 @@ def firstPalindrome(words):
     return "" 
     
 print(firstPalindrome(words = ["abc","car","ada","racecar","cool"]))
+
+
+# SORT ARRAY BY PARITY (LETCODE 905)
+
+def sortArrayByParity(nums):
+        
+        # Initialize two pointers at the start of the array
+        l = 0
+        r = 0
+
+        # Iterate through the array using a for loop
+        for r in range(len(nums)):
+
+            # If the number at r pointer is not even then 
+            # increment the r pointer
+            if nums[r] % 2 != 0:
+                r += 1
+            
+            # If the number at r pointer is even then swap 
+            # the element at r pointer with the element at the 
+            # l pointer and increment the l pointer 
+            elif nums[r] % 2 == 0:
+                nums[l], nums[r] = nums[r], nums[l]
+                l += 1
+
+        # Return the modified nums array        
+        return nums
+
+print(sortArrayByParity(nums = [3,1,2,4]))
