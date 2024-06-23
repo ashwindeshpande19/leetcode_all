@@ -494,3 +494,50 @@ def backspaceCompare(s, t):
             return False
 
 print(backspaceCompare(s = "ab#c", t = "ad#c"))
+
+# CHECK IF TWO STRING ARRAYS ARE EQUIVALENT (LEETCODE 1662)
+
+def arrayStringsAreEqual(word1, word2):
+
+    # Index of the word 
+    w1, w2 = 0, 0
+
+    # Index of the character
+    i, j = 0, 0
+
+    # Iterate through the arrays using a while loop
+    while w1 < len(word1) and w2 < len(word2):
+        
+        # If the two pointers are not equal then retur False
+        if word1[w1][i] != word2[w2][j]:
+            return False
+        
+        # Increment both the pointers i and j
+        i, j = i + 1, j + 1
+
+        # If the i pointer equals to the length of the word 
+        if i == len(word1[w1]):
+            w1 += 1
+
+            # Reset the i pointer to zero as the new word started
+            i = 0
+        
+        # If the j pointer equals to the length of the word
+        if j == len(word2[w2]):
+            w2 += 1
+
+            # Reset the j pointer to zero as the new word started
+            j = 0
+
+    # Check if the length of the word1 and word2 array if they 
+    # are not equal return False
+    if w1 != len(word1) or w2 != len(word2):
+        return False
+    
+    # If afer all the checks if the code does not return False then return True
+    return True
+
+
+print(arrayStringsAreEqual(word1 = ["ab", "c"], word2 = ["a", "bc"]))
+
+print(arrayStringsAreEqual(word1 = ["a", "cb"], word2 = ["ab", "c"]))
