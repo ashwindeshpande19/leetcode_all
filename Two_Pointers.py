@@ -583,3 +583,31 @@ def removeDuplicatesII(nums):
 
 print(removeDuplicatesII(nums = [1,1,1,2,2,3]))
 
+# TWO SUM II - INPUT ARRAY IS SORTED (LEETOCDE 167)
+
+def twoSumII(numbers, target):
+    
+    # Initialize two pointers, one at the start and one at the end
+    l, r = 0, len(numbers) - 1
+
+    # Iterate through the array
+    while l <= r:
+
+        # Calculate current sum that is number at left pointer 
+        # plus the number at right pointer
+        currentSum = numbers[l] + numbers[r]
+
+        # If the current sume is greater than target then 
+        # decrement the right pointer
+        if currentSum > target:
+            r -= 1
+        
+        # If the curent sum is less than the target increment the left pointer
+        elif currentSum < target:
+            l += 1
+
+        # Else retrun the indexes of the left and right pointer 
+        else:
+            return [l + 1, r + 1]
+        
+print(twoSumII(numbers = [2,7,11,15], target = 9))
