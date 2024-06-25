@@ -541,3 +541,45 @@ def arrayStringsAreEqual(word1, word2):
 print(arrayStringsAreEqual(word1 = ["ab", "c"], word2 = ["a", "bc"]))
 
 print(arrayStringsAreEqual(word1 = ["a", "cb"], word2 = ["ab", "c"]))
+
+# REMOVE DUPLICATES FROM SORTED ARRAY II (LEETCODE 80)
+
+def removeDuplicatesII(nums):
+    
+    # Initialize two pointers at the start of the nums array
+    l, r = 0, 0
+
+    # Iterate through the array until the right pointer reaches the end 
+    while r < len(nums):
+
+        # Initialize count to keep track of the number of occurences of 
+        # the current element
+        count = 1
+
+        # Check for consecutive duplicates while ensuring we 
+        # don't go out of bounds
+        while r + 1 < len(nums) and nums[r] == nums[r + 1]:
+
+            # Move the righr pointer to the next element
+            r += 1
+            
+            # Increment he count for each consecutive duplicate 
+            count += 1
+
+        # Copy at most two occurences of the element to the left pointer position
+        for i in range(min(2, count)):
+            
+            # Copy the element at the right pointer to left pointer
+            nums[l] = nums[r]
+
+            # Move the left pointer to the next position
+            l += 1
+
+        # Move the right pointer to the next position
+        r += 1
+
+    # Retrun the length of the modified array
+    return nums
+
+print(removeDuplicatesII(nums = [1,1,1,2,2,3]))
+
