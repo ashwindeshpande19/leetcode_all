@@ -41,3 +41,7 @@ def each_char_of_strings(strings):
         s = s + 1
         
 each_char_of_strings(strings)
+
+
+
+
